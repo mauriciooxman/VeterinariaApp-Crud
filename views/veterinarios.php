@@ -7,8 +7,8 @@ $db = $database->getConnection();
 $veterinario = new Veterinario($db);
 
 // Manejar eliminación
-if(isset($_GET['delete'])) {
-    $veterinario->id_veterinario = $_GET['delete'];
+if(isset($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 0) {
+    $veterinario->id_veterinario = intval($_GET['delete']);
     if($veterinario->delete()) {
         $message = "Veterinario eliminado exitosamente";
         $message_type = "success";

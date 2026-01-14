@@ -7,8 +7,8 @@ $db = $database->getConnection();
 $tratamiento = new Tratamiento($db);
 
 // Manejar eliminación
-if(isset($_GET['delete'])) {
-    $tratamiento->id_tratamiento = $_GET['delete'];
+if(isset($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 0) {
+    $tratamiento->id_tratamiento = intval($_GET['delete']);
     if($tratamiento->delete()) {
         $message = "Tratamiento eliminado exitosamente";
         $message_type = "success";

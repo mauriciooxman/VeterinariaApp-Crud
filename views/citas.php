@@ -7,8 +7,8 @@ $db = $database->getConnection();
 $cita = new Cita($db);
 
 // Manejar eliminación
-if(isset($_GET['delete'])) {
-    $cita->id_cita = $_GET['delete'];
+if(isset($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 0) {
+    $cita->id_cita = intval($_GET['delete']);
     if($cita->delete()) {
         $message = "Cita eliminada exitosamente";
         $message_type = "success";

@@ -13,9 +13,9 @@ $veterinario = new Veterinario($db);
 $edit_mode = false;
 
 // Verificar si es edición
-if(isset($_GET['id'])) {
+if(isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
     $edit_mode = true;
-    $cita->id_cita = $_GET['id'];
+    $cita->id_cita = intval($_GET['id']);
     $cita->readOne();
 }
 

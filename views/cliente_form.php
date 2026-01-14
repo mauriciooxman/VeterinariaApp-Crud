@@ -9,9 +9,9 @@ $cliente = new Cliente($db);
 $edit_mode = false;
 
 // Verificar si es edición
-if(isset($_GET['id'])) {
+if(isset($_GET['id']) && is_numeric($_GET['id']) && $_GET['id'] > 0) {
     $edit_mode = true;
-    $cliente->id_cliente = $_GET['id'];
+    $cliente->id_cliente = intval($_GET['id']);
     $cliente->readOne();
 }
 

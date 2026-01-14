@@ -7,8 +7,8 @@ $db = $database->getConnection();
 $mascota = new Mascota($db);
 
 // Manejar eliminación
-if(isset($_GET['delete'])) {
-    $mascota->id_mascota = $_GET['delete'];
+if(isset($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 0) {
+    $mascota->id_mascota = intval($_GET['delete']);
     if($mascota->delete()) {
         $message = "Mascota eliminada exitosamente";
         $message_type = "success";

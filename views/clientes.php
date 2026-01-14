@@ -7,8 +7,8 @@ $db = $database->getConnection();
 $cliente = new Cliente($db);
 
 // Manejar eliminación
-if(isset($_GET['delete'])) {
-    $cliente->id_cliente = $_GET['delete'];
+if(isset($_GET['delete']) && is_numeric($_GET['delete']) && $_GET['delete'] > 0) {
+    $cliente->id_cliente = intval($_GET['delete']);
     if($cliente->delete()) {
         $message = "Cliente eliminado exitosamente";
         $message_type = "success";
