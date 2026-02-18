@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Veterinaria CRUD</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+        }
+
+        .tabs {
+          margin-bottom: 20px;
+        }
+
+        .tab {
+          padding: 10px 15px;
+          cursor: pointer;
+          border: none;
+          background: #ddd;
+          margin-right: 5px;
+        }
+
+        .tab.active {
+          background: #4caf50;
+          color: white;
+        }
+
+        .section {
+          display: none;
+        }
+
+        .section.active {
+          display: block;
+        }
+
+        input {
+          margin: 5px 0;
+          padding: 5px;
+        }
+
+        button {
+          margin-top: 5px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        li {
+          margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Veterinaria - CRUD</h1>
+
+<div class="tabs">
+    <button class="tab active" onclick="cambiarTab('mascotas', this)">Mascotas</button>
+    <button class="tab" onclick="cambiarTab('usuarios', this)">Usuarios</button>
+    <button class="tab" onclick="cambiarTab('veterinarios', this)">Veterinarios</button>
+    <button class="tab" onclick="cambiarTab('medicamentos', this)">Medicamentos</button>
+</div>
+
+<!-- MASCOTAS -->
+<div id="mascotas" class="section active">
+    <h2>Mascotas</h2>
+  <input id="mascotaId" type="hidden" />
+  <p id="estadoEdicionMascota">Modo: Crear</p>
+    <input id="mascotaNombre" placeholder="Nombre" />
+    <input id="mascotaRaza" placeholder="Raza" />
+  <input id="mascotaTipoAnimal" placeholder="Tipo de animal" />
+  <select id="mascotaDuenio">
+    <option value="">Seleccione dueño</option>
+  </select>
+  <select id="mascotaVeterinario">
+    <option value="">Seleccione veterinario</option>
+  </select>
+  <select id="mascotaMedicamentos" multiple>
+    <option value="">Seleccione medicamentos</option>
+  </select>
+    <button onclick="guardarMascota()">Guardar</button>
+  <button onclick="cancelarEdicionMascota()">Cancelar edición</button>
+    <ul id="listaMascotas"></ul>
+</div>
+
+<!-- USUARIOS -->
+<div id="usuarios" class="section">
+    <h2>Usuarios</h2>
+    <input id="usuarioId" type="hidden" />
+    <p id="estadoEdicionUsuario">Modo: Crear</p>
+    <input id="usuarioNombre" placeholder="Nombre" />
+  <input id="usuarioApellido" placeholder="Apellido" />
+  <select id="usuarioMascota">
+    <option value="">Seleccione mascota</option>
+  </select>
+    <button onclick="guardarUsuario()">Guardar</button>
+    <button onclick="cancelarEdicionUsuario()">Cancelar edición</button>
+    <ul id="listaUsuarios"></ul>
+</div>
+
+<!-- VETERINARIOS -->
+<div id="veterinarios" class="section">
+    <h2>Veterinarios</h2>
+    <input id="vetNombre" placeholder="Nombre" />
+    <input id="vetEspecialidad" placeholder="Especialidad" />
+    <button onclick="guardarVeterinario()">Guardar</button>
+    <ul id="listaVeterinarios"></ul>
+</div>
+
+<!-- MEDICAMENTOS -->
+<div id="medicamentos" class="section">
+    <h2>Medicamentos</h2>
+    <input id="medNombre" placeholder="Nombre" />
+    <input id="medDosis" placeholder="Dosis" />
+    <button onclick="guardarMedicamento()">Guardar</button>
+    <ul id="listaMedicamentos"></ul>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
